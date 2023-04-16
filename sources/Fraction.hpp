@@ -1,5 +1,5 @@
 //
-// Description: Header file for the Fraction class
+// Created by shora on 15/04/2023.
 //
 
 #pragma once
@@ -20,11 +20,15 @@ namespace ariel {
         Fraction operator-(const Fraction& other) const;  // Subtraction
         Fraction operator*(const Fraction& other) const;  // Multiplication
         Fraction operator/(const Fraction& other) const;  // Division
-        Fraction operator+(double value) const;           // Addition with a float value
-        Fraction operator-(double value) const;           // Subtraction with a float value
-        Fraction operator*(double value) const;           // Multiplication with a float value
-        Fraction operator/(double value) const;           // Division with a float value
+        Fraction operator+(double value) const;           // Addition with a float value from the left
+        Fraction operator-(double value) const;           // Subtraction with a float value from the left
+        Fraction operator*(double value) const;           // Multiplication with a float value from the left
+        Fraction operator/(double value) const;           // Division with a float value from the left
 
+        friend Fraction operator+(double value, const Fraction& fraction); //Addition with a float value from the right
+        friend Fraction operator-(double value, const Fraction& fraction); //Subtraction with a float value from the right
+        friend Fraction operator*(double value, const Fraction& fraction); //Multiplication with a float value from the right
+        friend Fraction operator/(double value, const Fraction& fraction); //Division with a float value from the right
         // Comparison operators
         bool operator==(const Fraction& other) const;  // Equality
         bool operator!=(const Fraction& other) const;  // Inequality

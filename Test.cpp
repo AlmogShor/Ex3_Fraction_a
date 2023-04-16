@@ -44,6 +44,11 @@ TEST_CASE("init - Ctors") {
         CHECK_EQ(Fraction(-2, -4), Fraction(1, 2));
     }
 
+}
 
+TEST_CASE("reducing to 3 digit after the dot"){
 
+    SUBCASE("Test 5: simple reducing to complete numbers"){
+
+    }
 }
