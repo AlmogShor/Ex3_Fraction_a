@@ -52,8 +52,30 @@ namespace ariel {
         Fraction operator--(int);  // Postfix decrement
 
         // Input and output operators
-        friend std::ostream &operator<<(std::ostream &os, const Fraction &fraction);  // Output
-        friend std::istream &operator>>(std::istream &is, Fraction &fraction);        // Input
+//        friend std::ostream &operator<<(std::ostream &os, const Fraction &fraction);  // Output
+//        friend std::istream &operator>>(std::istream &is, Fraction &fraction);        // Input
+
+        friend std::ostream& operator<<(std::ostream &os, const Fraction &fraction); // Output
+        friend std::istream& operator>>(std::istream &is, Fraction &fraction);      // Input
+
+        // getter functions to help handling the input and output and for testing
+        int getNumerator() const {
+            return numerator;
+        }
+
+        int getDenominator() const {
+            return denominator;
+        }
+
+        // Setter functions to help handling the input and output and for testing
+        void setNumerator(int numerator) {
+            this->numerator = numerator;
+        }
+
+        void setDenominator(int denominator) {
+            this->denominator = denominator;
+        }
+
 
     private:
         mutable int numerator;   // Numerator of the fraction

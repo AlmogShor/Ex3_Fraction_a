@@ -87,6 +87,12 @@ Fraction Fraction::operator/(double value) const{
 /**
  * Arithmetic operators with double on the right
  */
+Fraction Fraction::operator+(double value, const Fraction &fraction){} //Addition with a float value from the right
+Fraction
+Fraction::operator-(double value, const Fraction &fraction){} //Subtraction with a float value from the right
+friend Fraction
+Fraction::operator*(double value, const Fraction &fraction){} //Multiplication with a float value from the right
+friend Fraction Fraction::operator/(double value, const Fraction &fraction){} //Division with a float value from the right
 
 /**
  * Comparison operators
@@ -133,20 +139,37 @@ Fraction temp = *this;
 --*this;
 return temp;
 }
+
+
 /**
  * ouput &input operators
  * */
 
-ostream Fraction::&operator<<(ostream &os, const Fraction &fraction) {
-    os << fraction.numerator << "/" << fraction.denominator;
+ostream& operator<<(ostream &os, const Fraction &fraction) {
+    os << fraction.getNumerator() << "/" << fraction.getDenominator();
     return os;
 }
 
-istream Fraction::&operator>>(istream &is, Fraction &fraction) {
+//input operator
+
+
+istream& operator>>(istream &is, Fraction& fraction) {
+    int numerator;
+    int denominator;
     char c;
-    is >> fraction.numerator >> c >> fraction.denominator;
+
+    is >> numerator >> c >> denominator;
+
+    if (c != '/') {
+        throw invalid_argument("Invalid input");
+    }
+    // Set the numerator and denominator of the Fraction object
+    fraction.setNumerator(numerator);
+    fraction.setDenominator(denominator);
+
     return is;
 }
+
 
 
 
