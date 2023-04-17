@@ -56,13 +56,13 @@ namespace ariel {
         friend std::istream &operator>>(std::istream &is, Fraction &fraction);        // Input
 
     private:
-        int numerator;   // Numerator of the fraction
-        int denominator; // Denominator of the fraction
+        mutable int numerator;   // Numerator of the fraction
+        mutable int denominator; // Denominator of the fraction
 
         // Helper functions to reduce the fraction to its simplest form
-        void reduce();
+        void reduce() const;
 
-        int gcd(int a, int b);
+        int gcd(int a, int b) const;
     };
 
 } // namespace ariel
