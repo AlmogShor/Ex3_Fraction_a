@@ -25,12 +25,10 @@ namespace ariel {
         Fraction operator*(double value) const;           // Multiplication with a float value from the left
         Fraction operator/(double value) const;           // Division with a float value from the left
 
-        friend Fraction operator+(double value, const Fraction &fraction); //Addition with a float value from the right
-        friend Fraction
-        operator-(double value, const Fraction &fraction); //Subtraction with a float value from the right
-        friend Fraction
-        operator*(double value, const Fraction &fraction); //Multiplication with a float value from the right
-        friend Fraction operator/(double value, const Fraction &fraction); //Division with a float value from the right
+        friend Fraction operator+(double value, const Fraction& fraction); //Addition with a float value from the right
+        friend Fraction operator-(double value, const Fraction& fraction); //Subtraction with a float value from the right
+        friend Fraction operator*(double value, const Fraction& fraction); //Multiplication with a float value from the right
+        friend Fraction operator/(double value, const Fraction& fraction); //Division with a float value from the right
         // Comparison operators
         bool operator==(const Fraction &other) const;  // Equality
         bool operator!=(const Fraction &other) const;  // Inequality

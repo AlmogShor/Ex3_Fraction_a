@@ -71,48 +71,62 @@ Fraction Fraction::operator/(const Fraction &other) const {
  * Arithmetic operators with double on the left
  */
 
-Fraction Fraction::operator+(double value) const{
+Fraction Fraction::operator+(double value) const {
     return Fraction(value) + *this;
 }        // Addition with a float value from the left
-Fraction Fraction::operator-(double value) const{
+Fraction Fraction::operator-(double value) const {
     return Fraction(value) - *this;
 }           // Subtraction with a float value from the left
-Fraction Fraction::operator*(double value) const{
+Fraction Fraction::operator*(double value) const {
     return Fraction(value) * *this;
 }           // Multiplication with a float value from the left
-Fraction Fraction::operator/(double value) const{
+Fraction Fraction::operator/(double value) const {
     return Fraction(value) / *this;
 }           // Division with a float value from the left
 
 /**
  * Arithmetic operators with double on the right
  */
-Fraction Fraction::operator+(double value, const Fraction &fraction){} //Addition with a float value from the right
-Fraction
-Fraction::operator-(double value, const Fraction &fraction){} //Subtraction with a float value from the right
-friend Fraction
-Fraction::operator*(double value, const Fraction &fraction){} //Multiplication with a float value from the right
-friend Fraction Fraction::operator/(double value, const Fraction &fraction){} //Division with a float value from the right
+// Addition with a double value from the right
+Fraction operator+(double value, const Fraction &fraction) {
+    return Fraction(value) + fraction;
+}
+
+// Subtraction with a double value from the right
+Fraction operator-(double value, const Fraction &fraction) {
+    return Fraction(value) - fraction;
+}
+
+// Multiplication with a double value from the right
+Fraction operator*(double value, const Fraction &fraction) {
+    return Fraction(value) * fraction;
+}
+
+// Division with a double value from the right
+Fraction operator/(double value, const Fraction &fraction) {
+    return Fraction(value) / fraction;
+}
+
 
 /**
  * Comparison operators
  */
-bool Fraction::operator==(const Fraction &other) const { return true;}  // Equality
-bool Fraction::operator!=(const Fraction &other) const { return true;}  // Inequality
-bool Fraction::operator>(const Fraction &other) const { return true;}   // Greater than
-bool Fraction::operator<(const Fraction &other) const { return true;}   // Less than
-bool Fraction::operator>=(const Fraction &other) const { return true;}  // Greater than or equal to
-bool Fraction::operator<=(const Fraction &other) const { return true;}  // Less than or equal to
+bool Fraction::operator==(const Fraction &other) const { return true; }  // Equality
+bool Fraction::operator!=(const Fraction &other) const { return true; }  // Inequality
+bool Fraction::operator>(const Fraction &other) const { return true; }   // Greater than
+bool Fraction::operator<(const Fraction &other) const { return true; }   // Less than
+bool Fraction::operator>=(const Fraction &other) const { return true; }  // Greater than or equal to
+bool Fraction::operator<=(const Fraction &other) const { return true; }  // Less than or equal to
 
 /**
  * Comparison operators with double
  */
-bool Fraction::operator==(double value) const { return true;}           // Equality with a float value
-bool Fraction::operator!=(double value) const { return true;}           // Inequality with a float value
-bool Fraction::operator>(double value) const { return true;}            // Greater than a float value
-bool Fraction::operator<(double value) const { return true;}            // Less than a float value
-bool Fraction::operator>=(double value) const { return true;}           // Greater than or equal to a float value
-bool Fraction::operator<=(double value) const { return true;}           // Less than or equal to a float value
+bool Fraction::operator==(double value) const { return true; }           // Equality with a float value
+bool Fraction::operator!=(double value) const { return true; }           // Inequality with a float value
+bool Fraction::operator>(double value) const { return true; }            // Greater than a float value
+bool Fraction::operator<(double value) const { return true; }            // Less than a float value
+bool Fraction::operator>=(double value) const { return true; }           // Greater than or equal to a float value
+bool Fraction::operator<=(double value) const { return true; }           // Less than or equal to a float value
 
 /**
  * Increment and decrement operators
@@ -125,19 +139,21 @@ Fraction &Fraction::operator++() {
 }
 
 Fraction Fraction::operator++(int) {  // Postfix increment
-Fraction temp = *this;
-++*this;
-return temp;
+    Fraction temp = *this;
+    ++*this;
+    return temp;
 }
+
 Fraction &Fraction::operator--() {
     this->numerator -= this->denominator;
     this->reduce();
     return *this;
 }
+
 Fraction Fraction::operator--(int) {  // Postfix decrement
-Fraction temp = *this;
---*this;
-return temp;
+    Fraction temp = *this;
+    --*this;
+    return temp;
 }
 
 
@@ -145,7 +161,7 @@ return temp;
  * ouput &input operators
  * */
 
-ostream& operator<<(ostream &os, const Fraction &fraction) {
+ostream &operator<<(ostream &os, const Fraction& fraction) {
     os << fraction.getNumerator() << "/" << fraction.getDenominator();
     return os;
 }
@@ -153,7 +169,7 @@ ostream& operator<<(ostream &os, const Fraction &fraction) {
 //input operator
 
 
-istream& operator>>(istream &is, Fraction& fraction) {
+istream &operator>>(istream &is, Fraction &fraction) {
     int numerator;
     int denominator;
     char c;
@@ -171,12 +187,10 @@ istream& operator>>(istream &is, Fraction& fraction) {
 }
 
 
-
-
 /**
  * Reduction functions
  */
- void Fraction::reduce() const{// need to fix
+void Fraction::reduce() const {// need to fix
     int gcd_tmp = gcd(this->numerator, this->denominator);
     this->numerator /= gcd_tmp;
     this->denominator /= gcd_tmp;
@@ -186,7 +200,7 @@ istream& operator>>(istream &is, Fraction& fraction) {
     }
 }
 
-int Fraction::gcd(int a, int b) const{
+int Fraction::gcd(int a, int b) const {
     if (b == 0) {
         return a;
     }
