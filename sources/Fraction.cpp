@@ -71,6 +71,13 @@ Fraction Fraction::operator/(const Fraction &other) const {
  * Arithmetic operators with double on the left
  */
 
+Fraction Fraction::operator+(double value) const{
+    return Fraction(value) + *this;
+}        // Addition with a float value from the left
+Fraction operator-(double value) const{}           // Subtraction with a float value from the left
+Fraction operator*(double value) const{}           // Multiplication with a float value from the left
+Fraction operator/(double value) const{}           // Division with a float value from the left
+
 /**
  * Arithmetic operators with double on the right
  */
@@ -94,20 +101,33 @@ Fraction &Fraction::operator++() {
     return *this;
 }
 
+Fraction Fraction::operator++(int) {  // Postfix increment
+Fraction temp = *this;
+++*this;
+return temp;
+}
 Fraction &Fraction::operator--() {
     this->numerator -= this->denominator;
     this->reduce();
     return *this;
 }
+Fraction Fraction::operator--(int) {  // Postfix decrement
+Fraction temp = *this;
+--*this;
+return temp;
+}
+/**
+ * ouput &input operators */
+
 
 /**
  * Reduction functions
  */
  void Fraction::reduce() {// need to fix
-    int gcd = __gcd(this->numerator, this->denominator);
-    this->numerator /= gcd;
-    this->denominator /= gcd;
-    if (this->denominator < 0) {
+    int gcd_tmp = gcd(this->numerator, this->denominator);
+    this->numerator /= gcd_tmp;
+    this->denominator /= gcd_tmp;
+    if (this->denominator < 0) { // is it right?
         this->numerator *= -1;
         this->denominator *= -1;
     }
