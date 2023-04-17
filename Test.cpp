@@ -6,7 +6,7 @@
 #include <iostream>
 #include "doctest.h"
 
-#inclode <stdexcept>
+#include <stdexcept>
 
 using namespace std;
 using namespace ariel;
@@ -28,9 +28,13 @@ TEST_CASE("init - Ctors") {
 
         SUBCASE("Test 3: reducing the fraction to zero when needed while creating it") {
 
-            CHECK_EQ((double) Fraction(0, 1), 0);
+//            CHECK_EQ((double) Fraction(0, 1), 0);
+            CHECK_EQ(Fraction(0, 1) == 0, true);
+            CHECK_EQ(Fraction(0, 1) == 1, false);
+            CHECK_EQ(Fraction(0, -1) == 0, true);
+            CHECK_EQ(Fraction(0, 1), Fraction(0, -1));
 
-            CHECK_EQ((double) Fraction(0, -1), 0);
+//            CHECK_EQ((double) Fraction(0, -1), 0);
 
         }
 
@@ -46,9 +50,9 @@ TEST_CASE("init - Ctors") {
 
 }
 
-TEST_CASE("reducing to 3 digit after the dot"){
+TEST_CASE("reducing to 3 digit after the dot") {
 
-    SUBCASE("Test 5: simple reducing to complete numbers"){
+    SUBCASE("Test 5: simple reducing to complete numbers") {
 
     }
 }
