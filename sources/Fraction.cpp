@@ -13,6 +13,7 @@ namespace ariel {
     Fraction::Fraction() {
         this->numerator = 0;
         this->denominator = 1;
+        this->reduce();
     }
 
     Fraction::Fraction(int numerator, int denominator) {
@@ -121,13 +122,28 @@ namespace ariel {
 /**
  * Comparison operators with double
  */
-    bool Fraction::operator==(double value) const { return true; }           // Equality with a float value
+    bool Fraction::operator==(double value) const {
+        return Fraction(value) == *this;
+    }           // Equality with a float value
     bool Fraction::operator!=(double value) const { return true; }           // Inequality with a float value
     bool Fraction::operator>(double value) const { return true; }            // Greater than a float value
     bool Fraction::operator<(double value) const { return true; }            // Less than a float value
     bool Fraction::operator>=(double value) const { return true; }           // Greater than or equal to a float value
     bool Fraction::operator<=(double value) const { return true; }           // Less than or equal to a float value
 
+    /**
+     * Comparison operators with double on the right
+     */
+    bool
+    operator==(double value, const Fraction &fraction) { return true; } //Equality with a float value from the right
+    bool
+    operator!=(double value, const Fraction &fraction) { return true; } //Inequality with a float value from the right
+    bool operator>(double value, const Fraction &fraction) { return true; } //Greater than a float value from the right
+    bool operator<(double value, const Fraction &fraction) { return true; } //Less than a float value from the right
+    bool operator>=(double value,
+                    const Fraction &fraction) { return true; } //Greater than or equal to a float value from the right
+    bool operator<=(double value,
+                    const Fraction &fraction) { return true; } //Less than or equal to a float value from the right
 /**
  * Increment and decrement operators
  */

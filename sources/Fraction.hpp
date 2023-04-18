@@ -36,12 +36,20 @@ namespace ariel {
         bool operator<(const Fraction &other) const;   // Less than
         bool operator>=(const Fraction &other) const;  // Greater than or equal to
         bool operator<=(const Fraction &other) const;  // Less than or equal to
-        bool operator==(double value) const;           // Equality with a float value
-        bool operator!=(double value) const;           // Inequality with a float value
-        bool operator>(double value) const;            // Greater than a float value
-        bool operator<(double value) const;            // Less than a float value
-        bool operator>=(double value) const;           // Greater than or equal to a float value
-        bool operator<=(double value) const;           // Less than or equal to a float value
+        bool operator==(double value) const;           // Equality with a float value from the left
+        bool operator!=(double value) const;           // Inequality with a float value from the left
+        bool operator>(double value) const;            // Greater than a float value from the left
+        bool operator<(double value) const;            // Less than a float value from the left
+        bool operator>=(double value) const;           // Greater than or equal to a float value from the left
+        bool operator<=(double value) const;           // Less than or equal to a float value from the left
+
+        friend bool operator==(double value, const Fraction& fraction); //Equality with a float value from the right
+        friend bool operator!=(double value, const Fraction& fraction); //Inequality with a float value from the right
+        friend bool operator>(double value, const Fraction& fraction); //Greater than a float value from the right
+        friend bool operator<(double value, const Fraction& fraction); //Less than a float value from the right
+        friend bool operator>=(double value, const Fraction& fraction); //Greater than or equal to a float value from the right
+        friend bool operator<=(double value, const Fraction& fraction); //Less than or equal to a float value from the right
+
 
         // Increment and decrement operators
         Fraction &operator++();    // Prefix increment
