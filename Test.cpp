@@ -55,4 +55,33 @@ TEST_CASE("reducing to 3 digit after the dot") {
     SUBCASE("Test 5: simple reducing to complete numbers") {
 
     }
+    SUBCASE("TTest 6: reducing after math operations that makes an overflow to 4 digits after the dot") {
+
+    }
+
+    SUBCASE("Test 7: chake with known Rational numbers Equalization") {
+
+    }
+}
+
+TEST_CASE("checking constructor from input") {
+    SUBCASE("Test 8: check with known Rational numbers Equalization") {
+
+    }
+
+    SUBCASE("Test 9: creating from basic input") {
+        SUBCASE("sub test 9a: full numbers and reducing") {
+
+        }
+        SUBCASE("sub test 9b: fraction numbers and  reducing") {
+
+        }
+    }
+    SUBCASE("Test 10: throw exception when denominator is 0") {
+
+    }
+    SUBCASE("Test 11: throw exception when wrong char between numerator and denominator") {
+
+    }
+
 }
